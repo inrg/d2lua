@@ -17,6 +17,26 @@
 
 #include <Windows.h>
 
+#include "Bootstrap.h"
+
 BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved) {
+    static cauldron::Bootstrap* bootstrap = cauldron::Bootstrap::getInstance();
+
+    switch (fdwReason) {
+    case DLL_PROCESS_ATTACH:
+        ::DisableThreadLibraryCalls(hinstDLL);
+        bootstrap->load(hinstDLL);
+
+        break;
+
+    case DLL_PROCESS_DETACH:
+        // If process is terminating
+        if (!lpvReserved) {
+            bootstrap->unload();
+        }
+
+        break;
+    }
+
     return TRUE;
 }
