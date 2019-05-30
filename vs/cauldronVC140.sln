@@ -4,6 +4,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cauldron", "VC140\cauldron.vcxproj", "{699E39C1-19FE-4980-AF1C-96CF54CFCE67}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C474C5B1-2EFB-4A9E-A5FD-9F17179AC3D2} = {C474C5B1-2EFB-4A9E-A5FD-9F17179AC3D2}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "inih", "VC140\inih.vcxproj", "{C474C5B1-2EFB-4A9E-A5FD-9F17179AC3D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +26,14 @@ Global
 		{699E39C1-19FE-4980-AF1C-96CF54CFCE67}.Release|x64.Build.0 = Release|x64
 		{699E39C1-19FE-4980-AF1C-96CF54CFCE67}.Release|x86.ActiveCfg = Release|Win32
 		{699E39C1-19FE-4980-AF1C-96CF54CFCE67}.Release|x86.Build.0 = Release|Win32
+		{C474C5B1-2EFB-4A9E-A5FD-9F17179AC3D2}.Debug|x64.ActiveCfg = Debug|x64
+		{C474C5B1-2EFB-4A9E-A5FD-9F17179AC3D2}.Debug|x64.Build.0 = Debug|x64
+		{C474C5B1-2EFB-4A9E-A5FD-9F17179AC3D2}.Debug|x86.ActiveCfg = Debug|Win32
+		{C474C5B1-2EFB-4A9E-A5FD-9F17179AC3D2}.Debug|x86.Build.0 = Debug|Win32
+		{C474C5B1-2EFB-4A9E-A5FD-9F17179AC3D2}.Release|x64.ActiveCfg = Release|x64
+		{C474C5B1-2EFB-4A9E-A5FD-9F17179AC3D2}.Release|x64.Build.0 = Release|x64
+		{C474C5B1-2EFB-4A9E-A5FD-9F17179AC3D2}.Release|x86.ActiveCfg = Release|Win32
+		{C474C5B1-2EFB-4A9E-A5FD-9F17179AC3D2}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
