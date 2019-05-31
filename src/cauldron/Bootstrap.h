@@ -19,9 +19,17 @@
 #define __CAULDRON_H__
 
 #include <Windows.h>
+#include <string>
 
 namespace cauldron {
     class Bootstrap {
+    public:
+        HMODULE module;
+        std::string dllName;
+        std::string basePath;
+
+        struct {
+        } config;
     public:
         void load(HMODULE);
         void unload(void);

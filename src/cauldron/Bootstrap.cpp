@@ -16,6 +16,7 @@
  */
 
 #include "Bootstrap.h"
+#include "../../dep/inih/cpp/INIReader.h"
 
 using namespace cauldron;
 
@@ -30,6 +31,15 @@ Bootstrap* Bootstrap::getInstance(void) {
 }
 
 void Bootstrap::load(HMODULE hModule) {
+    INIReader* ini;
+    TCHAR path[MAX_PATH];
+
+    module = hModule;
+    dllName = std::string(path);
+    basePath = dllName.substr(0, dllName.find_last_of('\\'));
+
+    ini = new INIReader(basePath + "\\cauldron.ini");
+    delete ini;
 } 
 
 void Bootstrap::unload(void) {
