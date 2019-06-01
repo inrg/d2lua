@@ -34,15 +34,28 @@ void Bootstrap::load(HMODULE hModule) {
     INIReader* ini;
     TCHAR path[MAX_PATH];
 
+    if (!::GetModuleFileName(hModule, path, MAX_PATH)) {
+        throw std::exception("Cannot get filename of cauldron module.");
+    }
+
     module = hModule;
     dllName = std::string(path);
     basePath = dllName.substr(0, dllName.find_last_of('\\'));
 
     ini = new INIReader(basePath + "\\cauldron.ini");
+
+    config.logging_filename = ini->Get("logging", "filename", basePath + "\\cauldron.log");
+    config.logging_level = LogLevel(ini->GetInteger("logging", "level", llInfo));
+
     delete ini;
+
+    logger = new Logger(config.logging_filename, config.logging_level);
+
+    logger->info("Cauldron loaded.");
 } 
 
 void Bootstrap::unload(void) {
+    logger->info("Cauldron unloaded.");
 }
 
 Bootstrap::Bootstrap(void) {

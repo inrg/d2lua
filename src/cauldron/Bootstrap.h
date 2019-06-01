@@ -20,6 +20,7 @@
 
 #include <Windows.h>
 #include <string>
+#include "Logger.h"
 
 namespace cauldron {
     class Bootstrap {
@@ -29,7 +30,11 @@ namespace cauldron {
         std::string basePath;
 
         struct {
+            std::string logging_filename;
+            LogLevel logging_level;
         } config;
+
+        Logger* logger;
     public:
         void load(HMODULE);
         void unload(void);
