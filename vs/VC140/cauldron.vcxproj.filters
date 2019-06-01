@@ -21,9 +21,15 @@
     <ClCompile Include="..\..\src\cauldron\Bootstrap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\cauldron\Logger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\cauldron\Bootstrap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cauldron\Logger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -131,9 +131,11 @@
   <ItemGroup>
     <ClCompile Include="..\..\src\cauldron\Bootstrap.cpp" />
     <ClCompile Include="..\..\src\cauldron\dllmain.cpp" />
+    <ClCompile Include="..\..\src\cauldron\Logger.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\cauldron\Bootstrap.h" />
+    <ClInclude Include="..\..\src\cauldron\Logger.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\src\cauldron\cauldron.ini" />
