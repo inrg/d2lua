@@ -36,7 +36,8 @@ namespace cauldron {
 
         Logger* logger;
     public:
-        void load(HMODULE);
+        void init(HMODULE);
+        void load(void);
         void unload(void);
         
         static Bootstrap* getInstance(void);

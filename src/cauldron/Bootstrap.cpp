@@ -30,7 +30,7 @@ Bootstrap* Bootstrap::getInstance(void) {
     return _instance;
 }
 
-void Bootstrap::load(HMODULE hModule) {
+void Bootstrap::init(HMODULE hModule) {
     INIReader* ini;
     TCHAR path[MAX_PATH];
 
@@ -51,10 +51,18 @@ void Bootstrap::load(HMODULE hModule) {
 
     logger = new Logger(config.logging_filename, config.logging_level);
 
-    logger->info("Cauldron loaded.");
+    logger->info("Cauldron initialized.");
 } 
 
+void Bootstrap::load(void) {
+    logger->info("Application loading.");
+
+    logger->info("Cauldron loaded.");
+}
+
 void Bootstrap::unload(void) {
+    logger->info("Cauldron unloading.");
+
     logger->info("Cauldron unloaded.");
 }
 
