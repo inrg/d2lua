@@ -6,9 +6,12 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cauldron", "VC140\cauldron.vcxproj", "{699E39C1-19FE-4980-AF1C-96CF54CFCE67}"
 	ProjectSection(ProjectDependencies) = postProject
 		{C474C5B1-2EFB-4A9E-A5FD-9F17179AC3D2} = {C474C5B1-2EFB-4A9E-A5FD-9F17179AC3D2}
+		{7E7697DC-18D3-4DB3-BF1C-5EB39F1D6ACF} = {7E7697DC-18D3-4DB3-BF1C-5EB39F1D6ACF}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "inih", "VC140\inih.vcxproj", "{C474C5B1-2EFB-4A9E-A5FD-9F17179AC3D2}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lua", "VC140\lua.vcxproj", "{7E7697DC-18D3-4DB3-BF1C-5EB39F1D6ACF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,6 +37,14 @@ Global
 		{C474C5B1-2EFB-4A9E-A5FD-9F17179AC3D2}.Release|x64.Build.0 = Release|x64
 		{C474C5B1-2EFB-4A9E-A5FD-9F17179AC3D2}.Release|x86.ActiveCfg = Release|Win32
 		{C474C5B1-2EFB-4A9E-A5FD-9F17179AC3D2}.Release|x86.Build.0 = Release|Win32
+		{7E7697DC-18D3-4DB3-BF1C-5EB39F1D6ACF}.Debug|x64.ActiveCfg = Debug|x64
+		{7E7697DC-18D3-4DB3-BF1C-5EB39F1D6ACF}.Debug|x64.Build.0 = Debug|x64
+		{7E7697DC-18D3-4DB3-BF1C-5EB39F1D6ACF}.Debug|x86.ActiveCfg = Debug|Win32
+		{7E7697DC-18D3-4DB3-BF1C-5EB39F1D6ACF}.Debug|x86.Build.0 = Debug|Win32
+		{7E7697DC-18D3-4DB3-BF1C-5EB39F1D6ACF}.Release|x64.ActiveCfg = Release|x64
+		{7E7697DC-18D3-4DB3-BF1C-5EB39F1D6ACF}.Release|x64.Build.0 = Release|x64
+		{7E7697DC-18D3-4DB3-BF1C-5EB39F1D6ACF}.Release|x86.ActiveCfg = Release|Win32
+		{7E7697DC-18D3-4DB3-BF1C-5EB39F1D6ACF}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
