@@ -70,12 +70,12 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>.\bin\$(Configuration)\</OutDir>
-    <IntDir>.\obj\$(Configuration)\</IntDir>
+    <IntDir>.\obj\$(Configuration)\$(ProjectName)\</IntDir>
     <LibraryPath>.\lib\$(Configuration);$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>.\bin\$(Configuration)\</OutDir>
-    <IntDir>.\obj\$(Configuration)\</IntDir>
+    <IntDir>.\obj\$(Configuration)\$(ProjectName)\</IntDir>
     <LibraryPath>.\lib\$(Configuration);$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
