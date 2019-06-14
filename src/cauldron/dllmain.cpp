@@ -16,27 +16,35 @@
  */
 
 #include <Windows.h>
-
+#include <exception>
 #include "Bootstrap.h"
 
 BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved) {
     static cauldron::Bootstrap* bootstrap = cauldron::Bootstrap::getInstance();
 
-    switch (fdwReason) {
-    case DLL_PROCESS_ATTACH:
-        ::DisableThreadLibraryCalls(hinstDLL);
-        bootstrap->init(hinstDLL);
-        bootstrap->load();
+    try {
+        switch (fdwReason) {
+        case DLL_PROCESS_ATTACH:
+            ::DisableThreadLibraryCalls(hinstDLL);
+            bootstrap->init(hinstDLL);
+            bootstrap->load();
 
-        break;
+            break;
 
-    case DLL_PROCESS_DETACH:
-        // If process is terminating
-        if (!lpvReserved) {
-            bootstrap->unload();
+        case DLL_PROCESS_DETACH:
+            // If process is terminating
+            if (!lpvReserved) {
+                bootstrap->unload();
+            }
+
+            break;
         }
+    }
+    catch (const std::exception& e) {
+        bootstrap->logger->error(std::string(e.what()));
 
-        break;
+        MessageBox(NULL, "Error occurred during runtime, see log files for details.", "Cauldron", 0);
+        return FALSE;
     }
 
     return TRUE;
