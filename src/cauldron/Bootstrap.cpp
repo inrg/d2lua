@@ -15,6 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <exception>
 #include "Bootstrap.h"
 #include "../../dep/inih/cpp/INIReader.h"
 
@@ -33,6 +34,10 @@ Bootstrap* Bootstrap::getInstance(void) {
 void Bootstrap::init(HMODULE hModule) {
     INIReader* ini;
     TCHAR path[MAX_PATH];
+
+    if (_status != bsNotInitialized) {
+        throw std::exception("Cauldron already initialized.");
+    }
 
     if (!::GetModuleFileName(hModule, path, MAX_PATH)) {
         throw std::exception("Cannot get filename of cauldron module.");
@@ -55,13 +60,26 @@ void Bootstrap::init(HMODULE hModule) {
 } 
 
 void Bootstrap::load(void) {
-    logger->info("Application loading.");
+    switch (_status) {
+    case bsNotInitialized:
+        throw std::exception("Cauldron not initialized yet.");
+        break;
+    case bsLoaded:
+        throw std::exception("Cauldron already loaded.");
+        break;
+    }
+
+    logger->info("Cauldron loading.");
+
+    _status = bsLoaded;
 
     logger->info("Cauldron loaded.");
 }
 
 void Bootstrap::unload(void) {
     logger->info("Cauldron unloading.");
+
+    _status = bsUnloaded;
 
     logger->info("Cauldron unloaded.");
 }

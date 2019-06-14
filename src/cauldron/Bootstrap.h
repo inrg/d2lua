@@ -23,6 +23,12 @@
 #include "Logger.h"
 
 namespace cauldron {
+    enum BootstrapStatus {
+        bsNotInitialized,
+        bsUnloaded,
+        bsLoaded
+    };
+
     class Bootstrap {
     public:
         HMODULE module;
@@ -43,6 +49,7 @@ namespace cauldron {
         static Bootstrap* getInstance(void);
     private:
         static Bootstrap* _instance;
+        BootstrapStatus _status = bsNotInitialized;
         Bootstrap(void);
     };
 }
