@@ -1,0 +1,3 @@
+LIBRARY template.dll BASE=0x6F100000
+EXPORTS
+	QueryInterface=QueryInterface
