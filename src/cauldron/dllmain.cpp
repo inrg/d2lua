@@ -49,3 +49,16 @@ BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved) {
 
     return TRUE;
 }
+
+// From d2loader plugin SDK
+#include "../../dep/d2loader/plugin.h"
+
+DWORD __stdcall PluginEntry(DWORD dwReason, LPVOID pData) {
+    return TRUE;
+}
+
+// NOTE: needs to be exported
+LPPLUGIN_INTERFACE __stdcall QueryInterface() {
+    static PLUGIN_INTERFACE Interface = { PLUGIN_MAGICWORD, PLUGIN_VERSION, "CAULDRON", PluginEntry };
+    return &Interface;
+}

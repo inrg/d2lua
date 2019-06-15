@@ -56,6 +56,8 @@ void Bootstrap::init(HMODULE hModule) {
 
     logger = new Logger(config.logging_filename, config.logging_level);
 
+    _status = bsUnloaded;
+
     logger->info("Cauldron initialized.");
 } 
 
