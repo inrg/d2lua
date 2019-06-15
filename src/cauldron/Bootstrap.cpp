@@ -18,10 +18,12 @@
 #include <exception>
 #include "Bootstrap.h"
 #include "../../dep/inih/cpp/INIReader.h"
+#include "lua.hpp"
 
 using namespace cauldron;
 
 Bootstrap* Bootstrap::_instance = NULL;
+lua_State* L;
 
 Bootstrap* Bootstrap::getInstance(void) {
     if (_instance == NULL) {
@@ -51,10 +53,14 @@ void Bootstrap::init(HMODULE hModule) {
 
     config.logging_filename = ini->Get("logging", "filename", basePath + "\\cauldron.log");
     config.logging_level = LogLevel(ini->GetInteger("logging", "level", llInfo));
+    config.lua_entryfile = ini->Get("lua", "entryfile", basePath + "\\main.lua");
 
     delete ini;
 
     logger = new Logger(config.logging_filename, config.logging_level);
+
+    L = luaL_newstate();
+    luaL_openlibs(L);
 
     _status = bsUnloaded;
 
@@ -72,6 +78,10 @@ void Bootstrap::load(void) {
     }
 
     logger->info("Cauldron loading.");
+
+    if (luaL_dofile(L, config.lua_entryfile.c_str()) != 0) {
+        throw std::exception(("Execute Lua file '" + config.lua_entryfile + "':" + std::string(lua_tostring(L, -1))).c_str());
+    }
 
     _status = bsLoaded;
 

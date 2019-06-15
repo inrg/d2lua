@@ -136,6 +136,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\src\cauldron\Bootstrap.h" />
     <ClInclude Include="..\..\src\cauldron\Logger.h" />
+    <ClInclude Include="..\..\src\cauldron\lua.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\src\cauldron\cauldron.ini" />

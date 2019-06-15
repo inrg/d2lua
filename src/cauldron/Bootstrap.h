@@ -38,6 +38,7 @@ namespace cauldron {
         struct {
             std::string logging_filename;
             LogLevel logging_level;
+            std::string lua_entryfile;
         } config;
 
         Logger* logger;
