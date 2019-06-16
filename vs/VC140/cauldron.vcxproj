@@ -130,11 +130,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\cauldron\Bootstrap.cpp" />
+    <ClCompile Include="..\..\src\cauldron\d2func_10010.cpp" />
     <ClCompile Include="..\..\src\cauldron\dllmain.cpp" />
     <ClCompile Include="..\..\src\cauldron\Logger.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\cauldron\Bootstrap.h" />
+    <ClInclude Include="..\..\src\cauldron\d2dllbase_10010.h" />
+    <ClInclude Include="..\..\src\cauldron\d2func.h" />
     <ClInclude Include="..\..\src\cauldron\Logger.h" />
     <ClInclude Include="..\..\src\cauldron\lua.hpp" />
   </ItemGroup>
