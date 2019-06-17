@@ -27,6 +27,9 @@
     <ClCompile Include="..\..\src\cauldron\d2func_10010.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\cauldron\ld2api.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\cauldron\Bootstrap.h">
@@ -42,6 +45,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\cauldron\d2func.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cauldron\ld2api.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

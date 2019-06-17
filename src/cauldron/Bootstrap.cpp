@@ -19,6 +19,7 @@
 #include "Bootstrap.h"
 #include "../../dep/inih/cpp/INIReader.h"
 #include "lua.hpp"
+#include "ld2api.h"
 
 using namespace cauldron;
 
@@ -61,6 +62,7 @@ void Bootstrap::init(HMODULE hModule) {
 
     L = luaL_newstate();
     luaL_openlibs(L);
+    luaopen_d2api(L);
 
     _status = bsUnloaded;
 
