@@ -131,6 +131,8 @@
   <ItemGroup>
     <ClCompile Include="..\..\src\cauldron\Bootstrap.cpp" />
     <ClCompile Include="..\..\src\cauldron\d2func_10010.cpp" />
+    <ClCompile Include="..\..\src\cauldron\d2patch.cpp" />
+    <ClCompile Include="..\..\src\cauldron\d2stub_10010.cpp" />
     <ClCompile Include="..\..\src\cauldron\dllmain.cpp" />
     <ClCompile Include="..\..\src\cauldron\ld2api.cpp" />
     <ClCompile Include="..\..\src\cauldron\Logger.cpp" />
@@ -139,6 +141,7 @@
     <ClInclude Include="..\..\src\cauldron\Bootstrap.h" />
     <ClInclude Include="..\..\src\cauldron\d2dllbase_10010.h" />
     <ClInclude Include="..\..\src\cauldron\d2func.h" />
+    <ClInclude Include="..\..\src\cauldron\d2patch.h" />
     <ClInclude Include="..\..\src\cauldron\ld2api.h" />
     <ClInclude Include="..\..\src\cauldron\Logger.h" />
     <ClInclude Include="..\..\src\cauldron\lua.hpp" />

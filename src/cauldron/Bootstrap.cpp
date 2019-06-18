@@ -20,6 +20,7 @@
 #include "../../dep/inih/cpp/INIReader.h"
 #include "lua.hpp"
 #include "ld2api.h"
+#include "d2patch.h"
 
 using namespace cauldron;
 
@@ -80,6 +81,7 @@ void Bootstrap::load(void) {
     }
 
     logger->info("Cauldron loading.");
+    diablo::InstallPatches();
 
     if (luaL_dofile(L, config.lua_entryfile.c_str()) != 0) {
         throw std::exception(("Execute Lua file '" + config.lua_entryfile + "':" + std::string(lua_tostring(L, -1))).c_str());
