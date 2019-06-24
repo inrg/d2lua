@@ -21,6 +21,7 @@
 #include <Windows.h>
 #include <string>
 #include "Logger.h"
+#include "lua.hpp"
 
 namespace cauldron {
     enum BootstrapStatus {
@@ -42,6 +43,7 @@ namespace cauldron {
         } config;
 
         Logger* logger;
+        lua_State* L;
     public:
         void init(HMODULE);
         void load(void);

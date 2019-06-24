@@ -25,7 +25,6 @@
 using namespace cauldron;
 
 Bootstrap* Bootstrap::_instance = NULL;
-lua_State* L;
 
 Bootstrap* Bootstrap::getInstance(void) {
     if (_instance == NULL) {

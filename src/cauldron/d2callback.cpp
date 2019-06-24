@@ -15,33 +15,30 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "d2dllbase_10010.h"
-#include "d2patch.h"
 #include "d2callback.h"
+#include "Bootstrap.h"
+#include "lua.hpp"
 
-void __declspec(naked) GameLoopStart_STUB(void) {
-    __asm {
-        pop eax
-        sub esp, 0x24
-        push edi
-        mov edi, ecx
-        push eax
-        jmp diablo::cbGameLoopStart
-    }
+using namespace diablo;
+
+BOOL m_GameInit = FALSE;
+cauldron::Bootstrap* m_bootstrap = cauldron::Bootstrap::getInstance();
+
+void diablo::cbGameLoopStart(void) {
+
+	if (!m_GameInit) {
+		m_GameInit = TRUE;
+
+        if (lua_getglobal(m_bootstrap->L, "__OnGameJoin") && lua_pcall(m_bootstrap->L, 0, 0, 0) != 0) {
+            // TODO Failed on calling 'OnGameJoin'
+        }
+	}
 }
 
-void __declspec(naked) GameLoopEnd_STUB(void) {
-    __asm {
-        call diablo::cbGameLoopEnd
+void diablo::cbGameLoopEnd(void) {
+    m_GameInit = FALSE;
 
-        // original codes
-        mov ecx, 0xB4
-        ret
+    if (lua_getglobal(m_bootstrap->L, "__OnGameLeave") && lua_pcall(m_bootstrap->L, 0, 0, 0) != 0) {
+        // TODO Failed on calling 'OnGameLeave'
     }
 }
-
-diablo::D2Patch diablo::patches[] = {
-    { D2PATCH_CALL, DLLBASE_D2CLIENT + 0x9640, (DWORD)GameLoopStart_STUB, 6, -1 },
-    { D2PATCH_CALL, DLLBASE_D2CLIENT + 0xB528, (DWORD)GameLoopEnd_STUB, 5, -1 },
-    { 0 }
-};

@@ -36,6 +36,9 @@
     <ClCompile Include="..\..\src\cauldron\d2stub_10010.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\cauldron\d2callback.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\cauldron\Bootstrap.h">
@@ -57,6 +60,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\cauldron\d2patch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cauldron\d2callback.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

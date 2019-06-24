@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018 HE Yaowen <he.yaowen@hotmail.com>
+ * Copyright (C) 2019 HE Yaowen <he.yaowen@hotmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,16 +15,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __D2LIB_D2CALLBACK_H__
-#define __D2LIB_D2CALLBACK_H__
+#ifndef __CAULDRON_D2CALLBACK_H__
+#define __CAULDRON_D2CALLBACK_H__
 
 #include <Windows.h>
 
-namespace d2lib {
+namespace diablo {
     void cbGameLoopStart(void);
     void cbGameLoopEnd(void);
-    void __fastcall cbKeyDown(BYTE keyCode, BYTE repeat);
-    DWORD __fastcall cbGamePacketReceived(BYTE* packet, DWORD length);
 }
 
-#endif // __D2LIB_D2CALLBACK_H__
+#endif // __CAULDRON_D2CALLBACK_H__
