@@ -42,3 +42,33 @@ void diablo::cbGameLoopEnd(void) {
         // TODO Failed on calling 'OnGameLeave'
     }
 }
+
+void __fastcall diablo::cbKeyDown(BYTE keyCode, BYTE repeat) {
+    if ((keyCode == (BYTE)-1) || !keyCode) {
+        return;
+    }
+
+    lua_pushinteger(m_bootstrap->L, keyCode);
+    lua_pushinteger(m_bootstrap->L, repeat);
+
+    if (lua_pcall(m_bootstrap->L, 2, 0, 0) != 0) {
+        // TODO Failed on calling 'OnKeyDown'
+
+    }
+}
+
+DWORD __fastcall diablo::cbGamePacketReceived(BYTE* packet, DWORD length) {
+    if (!lua_getglobal(m_bootstrap->L, "__OnPacketReceive")) {
+        return 0;
+    }
+
+    lua_pushlstring(m_bootstrap->L, (const char*)packet, length);
+    lua_pushinteger(m_bootstrap->L, length);
+
+    if (lua_pcall(m_bootstrap->L, 2, 0, 0) != 0) {
+        // TODO Failed on calling 'OnPacketReceive'
+    }
+
+    return length;
+}
+

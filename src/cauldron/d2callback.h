@@ -23,6 +23,8 @@
 namespace diablo {
     void cbGameLoopStart(void);
     void cbGameLoopEnd(void);
+    void __fastcall cbKeyDown(BYTE keyCode, BYTE repeat);
+    DWORD __fastcall cbGamePacketReceived(BYTE* packet, DWORD length);
 }
 
 #endif // __CAULDRON_D2CALLBACK_H__

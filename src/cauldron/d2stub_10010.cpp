@@ -18,6 +18,7 @@
 #include "d2dllbase_10010.h"
 #include "d2patch.h"
 #include "d2callback.h"
+#include "Bootstrap.h"
 
 void __declspec(naked) GameLoopStart_STUB(void) {
     __asm {
@@ -40,8 +41,43 @@ void __declspec(naked) GameLoopEnd_STUB(void) {
     }
 }
 
+void __declspec(naked) KeyDown_STUB(void) {
+    __asm {
+        //edi = ptr to (hwnd, msg, wparam, lparam)
+        mov cl, [edi + 0x08] //nVirtKey (wparam)
+        mov dl, [edi + 0x0c + 3] //lKeyData (lparam)
+        and dl, 0x40 //bit 30 of lKeyData (lparam)
+        call diablo::cbKeyDown
+
+        //original code
+        test byte ptr[edi + 0x0c + 3], 0x40 //bit 30 of lKeyData (lparam)
+        ret
+    }
+}
+
+void __declspec(naked) GamePacketReceived_STUB() {
+    __asm {
+        // original code
+        and ebx, 0xFF;
+        lea edx, [ebx + ebx * 2];
+        pushad;
+
+        // Call our clean c function
+        mov edx, ecx;
+        mov ecx, ebp;
+        call diablo::cbGamePacketReceived;
+
+        // Return to game
+        popad;
+        add dword ptr[esp], 4;
+        ret;
+    }
+}
+
 diablo::D2Patch diablo::patches[] = {
     { D2PATCH_CALL, DLLBASE_D2CLIENT + 0x9640, (DWORD)GameLoopStart_STUB, 6, -1 },
     { D2PATCH_CALL, DLLBASE_D2CLIENT + 0xB528, (DWORD)GameLoopEnd_STUB, 5, -1 },
+    { D2PATCH_CALL, DLLBASE_D2CLIENT + 0x35A07, (DWORD)KeyDown_STUB, 7, -1 },
+    { D2PATCH_CALL, DLLBASE_D2CLIENT + 0x1511A, (DWORD)GamePacketReceived_STUB, 9, -1 },
     { 0 }
 };
